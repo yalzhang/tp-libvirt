@@ -45,7 +45,7 @@ def run(test, params, env):
             if libvirt_version.version_compare(6, 3, 0):
                 test.fail("libvirtd.log get error: %s" % out)
             else:
-                test.fail("the bug is not fixed on this libvirt version")
+                test.cancel("Bug 1557902 was not fixed until libvirt-6.3.0")
 
     finally:
         process.run("ip l delete %s; ip l delete %s" % (name_2, name_1), ignore_status=True, shell=True)
